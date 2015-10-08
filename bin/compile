@@ -18,6 +18,8 @@ shopt -s dotglob
 
 cd $BUILD_DIR
 
+mkdir www
+
 # unpack cache
 for DIR in $APACHE_PATH ; do
   rm -rf $DIR
