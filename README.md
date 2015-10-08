@@ -9,7 +9,7 @@ Use
     $ ls
     index.html      somedir/
     $ git init
-    $ heroku create --stack cedar --buildpack https://github.com/pearkes/heroku-buildpack-static
+    $ heroku create --stack cedar --buildpack https://github.com/sdsbirdman/heroku-buildpack-httpd.git
     $ git add .
     $ git commit -m "initial commit"
     $ git push heroku master

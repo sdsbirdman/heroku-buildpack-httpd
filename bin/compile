@@ -18,16 +18,6 @@ shopt -s dotglob
 
 cd $BUILD_DIR
 
-# move app things to www
-mkdir -p $CACHE_DIR/www
-mv * $CACHE_DIR/www
-mv $CACHE_DIR/www .
-
-# keep Procfile
-if [ -f www/Procfile ]; then
-  mv www/Procfile .
-fi
-
 # unpack cache
 for DIR in $APACHE_PATH ; do
   rm -rf $DIR
@@ -45,6 +35,9 @@ fi
 
 # update config files
 cp $LP_DIR/conf/httpd.conf $APACHE_PATH/conf
+if [ -f $BUILD_DIR/conf/httpd.conf ]; then
+  mv $BUILD_DIR/conf/httpd.conf $APACHE_PATH/conf/httpd.conf
+fi  
 
 cat >>boot.sh <<EOF
 sed -i 's/Listen 80/Listen '\$PORT'/' /app/apache/conf/httpd.conf
